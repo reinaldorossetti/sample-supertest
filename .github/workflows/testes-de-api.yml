@@ -8,7 +8,7 @@ on:
 jobs:
   teste-de-api-com-serverest-local-em-docker:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout do repositório
