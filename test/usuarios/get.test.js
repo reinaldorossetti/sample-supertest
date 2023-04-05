@@ -11,7 +11,7 @@ describe(rotaUsuarios + ' GET', () => {
       administrador: usuario.administrador,
       _id: usuario._id
     }).expect(200)
-
+    allureMocha.allure.severity("critical")
     expect(body).to.deep.equal( {
       quantidade: 1,
       usuarios: [
@@ -30,6 +30,7 @@ describe(rotaUsuarios + ' GET', () => {
     const response = await request.get(rotaUsuarios).query({ _id: 'a' }).set('Accept', 'application/json')
     console.log(response.body)
     allureMocha.allure.parameter("body", String(response.text));
+    allureMocha.allure.severity("minor")
     expect(response.body).to.deep.equal({ quantidade: 0, usuarios: [] })
   })
 
