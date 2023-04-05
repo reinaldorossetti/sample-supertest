@@ -1,4 +1,4 @@
-name: Testes de API
+name: Testes de API Local
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     - name: Setup do Node.js
       uses: actions/setup-node@v2.1.1
     - name: Instalar as dependências do projeto
-      run: npm install
+      run: npm ci
     - name: Executar o ServeRest localmente com Docker
       run: docker run -d -p 3000:3000 paulogoncalvesbh/serverest:latest
     - name: Executar os testes de API

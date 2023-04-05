@@ -1,4 +1,4 @@
-name: Testes de API
+name: Testes de API em PROD
 
 on:
   push:
@@ -27,6 +27,7 @@ jobs:
       with:
         name: allure-report
         path: allure-report
+        
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
