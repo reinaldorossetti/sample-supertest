@@ -35,7 +35,7 @@ jobs:
       run: npm ci
     - name: Executar os testes de API
       run: npm run test:prod
-       - name: mostra as pastas
+    - name: mostra as pastas
       run: ls -la
     - name: Collect Allure files and generate allure-report folder
       run: |
