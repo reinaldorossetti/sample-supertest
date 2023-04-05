@@ -4,6 +4,7 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+permissions: write-all
 
 jobs:
   teste-de-api-em-serverest-dev:
