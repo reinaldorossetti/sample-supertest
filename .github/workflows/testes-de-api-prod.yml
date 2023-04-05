@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout do repositório
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Setup do Node.js
-      uses: actions/setup-node@v2.1.1
+      uses: actions/setup-node@v3
     - name: Instalar as dependências do projeto
       run: npm ci  | 
            npm install -g allure-commandline --save-dev
