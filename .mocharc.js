@@ -1,6 +1,9 @@
 module.exports = {
-  reporter: 'mochawesome',
-  reporterOptions: 'json=false,reportDir=report,reportFilename=automacao-api',
+  reporter: 'allure-mocha',
+  //reporterOptions: 'json=false,reportDir=report,reportFilename=automacao-api',
   require: 'test/utils/global.js',
+  timeout: 5000,
+  parallel: true,
+  jobs: 4,
   spec: ["test/**/*.test.js"]
 }
