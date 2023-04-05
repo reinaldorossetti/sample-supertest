@@ -1,4 +1,4 @@
-name: Testes de API
+name: Testes de API Local
 
 on:
   push:
@@ -21,20 +21,6 @@ jobs:
       run: docker run -d -p 3000:3000 paulogoncalvesbh/serverest:latest
     - name: Executar os testes de API
       run: npm test
-      
-  teste-de-api-em-serverest-dev:
-
-    runs-on: ubuntu-18.04
-
-    steps:
-    - name: Checkout do repositório
-      uses: actions/checkout@v2
-    - name: Setup do Node.js
-      uses: actions/setup-node@v2.1.1
-    - name: Instalar as dependências do projeto
-      run: npm ci
-    - name: Executar os testes de API
-      run: npm run test:prod
     - name: mostra as pastas
       run: ls -la
     - name: Collect Allure files and generate allure-report folder
@@ -45,7 +31,6 @@ jobs:
       with:
         name: allure-report
         path: allure-report
-        
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
