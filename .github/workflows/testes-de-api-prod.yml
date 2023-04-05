@@ -14,7 +14,8 @@ jobs:
     - name: Setup do Node.js
       uses: actions/setup-node@v2.1.1
     - name: Instalar as dependências do projeto
-      run: npm ci
+      run: npm ci  | 
+           npm install -g allure-commandline --save-dev
     - name: Executar os testes de API
       run: npm run test:prod
     - name: mostra as pastas
