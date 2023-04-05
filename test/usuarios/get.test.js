@@ -1,5 +1,3 @@
-const { expect } = require("chai");
-const allureMocha = require("allure-mocha/runtime");
 const rotaUsuarios = '/usuarios'
 const utils = require('../utils')
 
@@ -14,7 +12,7 @@ describe(rotaUsuarios + ' GET', () => {
       _id: usuario._id
     }).expect(200)
 
-    chai.assert.deepEqual(body, {
+    expect(body).to.deep.equal( {
       quantidade: 1,
       usuarios: [
         {
@@ -28,15 +26,18 @@ describe(rotaUsuarios + ' GET', () => {
     })
   })
 
-  it('Query string - Nenhum usuário encontrado', async () => {
-    const { body } = await request.get(rotaUsuarios).query({ _id: 'a' }).expect(200)
-    allureMocha.allure.parameter("body", body);
-    expect(body).to.deep.equal({ quantidade: 0, usuarios: [] })
+  it('Query string - Nenhum usuário encontrado', async function() {
+    const response = await request.get(rotaUsuarios).query({ _id: 'a' }).set('Accept', 'application/json')
+    console.log(response.body)
+    allureMocha.allure.parameter("body", String(response.text));
+    expect(response.body).to.deep.equal({ quantidade: 0, usuarios: [] })
   })
 
-  it('Query string - Chave inexistente', async () => {
-    const { body } = await request.get(rotaUsuarios).query({ inexistente: 'a' }).expect(400)
-    allureMocha.allure.parameter("body", body);
-    expect(body).to.deep.equal({ inexistente: 'inexistente não é permitido' })
+  it('Query string - Chave inexistente', async function() {
+    const response = await request.get(rotaUsuarios).query({ inexistente: 'a' }).expect(400)
+    console.log(response.body)
+    allureMocha.allure.parameter("body", response.text);
+    expect(response.body).to.deep.equal({ inexistente: 'inexistente não é permitido' })
   })
+
 })
