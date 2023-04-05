@@ -1,5 +1,5 @@
 const chai = require('chai')
-
+const allureMocha = require("allure-mocha/runtime");
 const rotaUsuarios = '/usuarios'
 const utils = require('../utils')
 
@@ -30,12 +30,13 @@ describe(rotaUsuarios + ' GET', () => {
 
   it('Query string - Nenhum usuário encontrado', async () => {
     const { body } = await request.get(rotaUsuarios).query({ _id: 'a' }).expect(200)
+    allureMocha.allure.parameter("body", body);
     chai.assert.deepEqual(body, { quantidade: 0, usuarios: [] })
   })
 
   it('Query string - Chave inexistente', async () => {
     const { body } = await request.get(rotaUsuarios).query({ inexistente: 'a' }).expect(400)
-
+    allureMocha.allure.parameter("body", body);
     chai.assert.deepEqual(body, { inexistente: 'inexistente não é permitido' })
   })
 })
